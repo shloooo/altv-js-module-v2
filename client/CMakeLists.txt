@@ -86,11 +86,6 @@ if(WIN32 AND (MSVC OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"))
     add_definitions(/MP)
 endif()
 
-set(SDK_PROJECT_NAME alt-sdk-jsv2)
-if(NOT TARGET ${SDK_PROJECT_NAME})
-    include(${ALTV_JSV2_CPP_SDK}/cpp-sdk/CMakeLists.txt)
-endif()
-
 add_custom_command(
     OUTPUT  ${CMAKE_CURRENT_SOURCE_DIR}/../build/BindingsMap.cpp
     COMMAND node ${CMAKE_CURRENT_SOURCE_DIR}/../tools/generate-bindings.js ${CMAKE_CURRENT_SOURCE_DIR}/..

@@ -14,17 +14,10 @@ namespace alt
 
 class CJavaScriptRuntime : public js::IRuntime<CJavaScriptRuntime, CJavaScriptResource>
 {
-#ifdef ALTV_JSV2_SHARED
     std::unique_ptr<v8::Platform> platform;
     v8::Platform* GetPlatform() {
         return platform.get();
     }
-#else
-    v8::Platform* GetPlatform()
-    {
-        return alt::GetV8Platform();
-    }
-#endif
 
     static void OnFatalError(const char* location, const char* message);
     static void OnHeapOOM(const char* location, bool isHeap);
